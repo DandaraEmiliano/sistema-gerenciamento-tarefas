@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const taskRoutes = require("./routes/taskRoutes");
+const taskRoutes = require("./server/routes/taskRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -9,10 +9,7 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 mongoose
-  .connect("mongodb://localhost/sistema-gerenciamento-tarefas", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect("mongodb://localhost/sistema-gerenciamento-tarefas")
   .then(() => console.log("Conectado ao MongoDB"))
   .catch((err) => console.error("Erro ao conectar ao MongoDB", err));
 
